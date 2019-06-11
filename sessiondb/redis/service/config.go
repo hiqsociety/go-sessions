@@ -8,7 +8,7 @@ const (
 	// DefaultRedisNetwork the redis network option, "tcp"
 	DefaultRedisNetwork = "tcp"
 	// DefaultRedisAddr the redis address option, "127.0.0.1:6379"
-	DefaultRedisAddr = "127.0.0.1:6379"
+	DefaultRedisAddr = "127.0.0.1:98"
 	// DefaultRedisIdleTimeout the redis idle timeout option, time.Duration(5) * time.Minute
 	DefaultRedisIdleTimeout = time.Duration(5) * time.Minute
 )
