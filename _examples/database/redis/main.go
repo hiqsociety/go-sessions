@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/kataras/go-sessions"
-	"github.com/kataras/go-sessions/sessiondb/redis"
-	"github.com/kataras/go-sessions/sessiondb/redis/service"
+	"github.com/gitmko0/go-sessions"
+	"github.com/gitmko0/go-sessions/sessiondb/redis"
+	"github.com/gitmko0/go-sessions/sessiondb/redis/service"
 )
 
 func main() {
@@ -72,5 +72,5 @@ func main() {
 		sess.ShiftExpiration(w, r)
 	})
 
-	http.ListenAndServe(":8080", app)
+	http.ListenAndServe(":80", app)
 }
