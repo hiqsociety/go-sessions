@@ -23,7 +23,7 @@ func main() {
 
 	defer db.Close()
 
-	sess := sessions.New(sessions.Config{Cookie: "sessionscookieid"})
+	sess := sessions.New(sessions.Config{Cookie: "s"})
 
 	//
 	// IMPORTANT:
@@ -39,22 +39,22 @@ func main() {
 	app.HandleFunc("/set", func(w http.ResponseWriter, r *http.Request) {
 		s := sess.Start(w, r)
 		//set session values
-		s.Set("name", "iris")
+		s.Set("", "iris")
 
 		//test if setted here
-		w.Write([]byte(fmt.Sprintf("All ok session setted to: %s", s.GetString("name"))))
+		w.Write([]byte(fmt.Sprintf("All ok session setted to: %s", s.GetString(""))))
 	})
 
 	app.HandleFunc("/get", func(w http.ResponseWriter, r *http.Request) {
 		// get a specific key, as string, if no found returns just an empty string
-		name := sess.Start(w, r).GetString("name")
+		name := sess.Start(w, r).GetString("")
 
 		w.Write([]byte(fmt.Sprintf("The name on the /set was: %s", name)))
 	})
 
 	app.HandleFunc("/delete", func(w http.ResponseWriter, r *http.Request) {
 		// delete a specific key
-		sess.Start(w, r).Delete("name")
+		sess.Start(w, r).Delete("")
 	})
 
 	app.HandleFunc("/clear", func(w http.ResponseWriter, r *http.Request) {
