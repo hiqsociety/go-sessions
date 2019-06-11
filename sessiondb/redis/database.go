@@ -61,7 +61,7 @@ func (db *Database) OnUpdateExpiration(sid string, newExpires time.Duration) err
 	return db.redis.UpdateTTLMany(sid, int64(newExpires.Seconds()))
 }
 
-const delim = "_"
+//const delim = "_"
 
 func makeKey(sid, key string) string {
 	return sid
