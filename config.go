@@ -10,7 +10,7 @@ import (
 
 const (
 	// DefaultCookieName the secret cookie's name for sessions
-	DefaultCookieName = "gosessionid"
+	DefaultCookieName = "s"
 )
 
 // Encoding is the Cookie Encoder/Decoder interface, which can be passed as configuration field
