@@ -2,6 +2,7 @@ package sessions
 
 import (
 	"time"
+        "math/rand"
 
         "github.com/oklog/ulid"
 
