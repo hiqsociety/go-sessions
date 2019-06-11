@@ -4,7 +4,7 @@ import (
 	"time"
         "math/rand"
 
-        "github.com/oklog/ulid"
+        "github.com/gitmko0/ulid"
 
 //	"github.com/iris-contrib/go.uuid"
 )
