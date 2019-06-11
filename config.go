@@ -3,7 +3,9 @@ package sessions
 import (
 	"time"
 
-	"github.com/iris-contrib/go.uuid"
+        "github.com/oklog/ulid"
+
+//	"github.com/iris-contrib/go.uuid"
 )
 
 const (
@@ -124,8 +126,10 @@ func (c Config) Validate() Config {
 
 	if c.SessionIDGenerator == nil {
 		c.SessionIDGenerator = func() string {
-			id, _ := uuid.NewV4()
-			return id.String()
+                        b := ulid.MustNew(ulid.Timestamp(time.Now()), rand.New(rand.NewSource(time.Now().UnixNano())))
+//      fmt.Printf("String form: %s\n", b.String())
+//      fmt.Printf("Hex form: %x\n", b)
+                        return b.String()
 		}
 	}
 
