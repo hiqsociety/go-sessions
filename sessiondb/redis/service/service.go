@@ -111,9 +111,9 @@ func (r *Service) TTL(key string) (seconds int64, hasExpiration bool, found bool
         return
 }
 
-func (r *Service) updateTTLConn(c redis.Conn, key string, newSecondsLifeTime int64) error {
-        ulidKey, _ := ulid.Parse(key)
-        reply, err := c.Do("EXPIRE", ulidKey.Bytes(), newSecondsLifeTime)
+func (r *Service) updateTTLConn(c redis.Conn, key []byte, newSecondsLifeTime int64) error {
+        //ulidKey, _ := ulid.Parse(key)
+        reply, err := c.Do("EXPIRE", key, newSecondsLifeTime)
 
         if err != nil {
                 return err
