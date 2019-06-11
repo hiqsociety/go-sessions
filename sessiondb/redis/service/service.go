@@ -153,6 +153,8 @@ func (r *Service) UpdateTTL(key string, newSecondsLifeTime int64) error {
 // it is a bit faster operation if you need to update all sessions keys (although it can be even faster if we used hash but this will limit other features),
 // look the `sessions/Database#OnUpdateExpiration` for example.
 func (r *Service) UpdateTTLMany(prefix string, newSecondsLifeTime int64) error {
+        return nil
+        /*
         c := r.pool.Get()
         defer c.Close()
         if err := c.Err(); err != nil {
@@ -172,6 +174,7 @@ func (r *Service) UpdateTTLMany(prefix string, newSecondsLifeTime int64) error {
         }
 
         return err
+        */
 }
 
 // GetAll returns all redis entries using the "SCAN" command (2.8+).
