@@ -64,7 +64,8 @@ func (db *Database) OnUpdateExpiration(sid string, newExpires time.Duration) err
 const delim = "_"
 
 func makeKey(sid, key string) string {
-	return sid + delim + key
+	return sid
+	//return sid + delim + key
 }
 
 // Set sets a key value of a specific session.
