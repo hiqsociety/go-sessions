@@ -95,12 +95,15 @@ func (db *Database) get(key string, outPtr interface{}) {
 }
 
 func (db *Database) keys(sid string) []string {
+	return nil
+	/*
 	keys, err := db.redis.GetKeys(sid + delim)
 	if err != nil {
 		return nil
 	}
 
 	return keys
+	*/
 }
 
 // Visit loops through all session keys and values.
