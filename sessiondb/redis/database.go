@@ -37,22 +37,25 @@ func (db *Database) Config() *service.Config {
 // Acquire receives a session's lifetime from the database,
 // if the return value is LifeTime{} then the session manager sets the life time based on the expiration duration lives in configuration.
 func (db *Database) Acquire(sid string, expires time.Duration) sessions.LifeTime {
-	seconds, hasExpiration, found := db.redis.TTL(sid)
-	if !found {
-		// not found, create an entry with ttl and return an empty lifetime, session manager will do its job.
-		if err := db.redis.Set(sid, sid, int64(expires.Seconds())); err != nil {
-			return sessions.LifeTime{Time: sessions.CookieExpireDelete}
-		}
+        return sessions.LifeTime{Time: time.Now().Add(time.Duration(0) * time.Second)}
+        /*
+        seconds, hasExpiration, found := db.redis.TTL(sid)
+        if !found {
+                // not found, create an entry with ttl and return an empty lifetime, session manager will do its job.
+                if err := db.redis.Set(sid, sid, int64(expires.Seconds())); err != nil {
+                        return sessions.LifeTime{Time: sessions.CookieExpireDelete}
+                }
 
-		return sessions.LifeTime{} // session manager will handle the rest.
-	}
+                return sessions.LifeTime{} // session manager will handle the rest.
+        }
 
-	if !hasExpiration {
-		return sessions.LifeTime{}
+        if !hasExpiration {
+                return sessions.LifeTime{}
 
-	}
+        }
 
-	return sessions.LifeTime{Time: time.Now().Add(time.Duration(seconds) * time.Second)}
+        return sessions.LifeTime{Time: time.Now().Add(time.Duration(seconds) * time.Second)}
+        */
 }
 
 // OnUpdateExpiration will re-set the database's session's entry ttl.
